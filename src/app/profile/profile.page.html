@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar color='danger'>
+    <ion-buttons slot="start">
+      <ion-menu-button class="w3-text-white"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="w3-center" style="margin-left: -80px;">Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)='refresh($event)' pullingIcon="arrow-dropdown"  pullingText="Pull to refresh"   pullFactor="0.5" pullMin="100" pullMax="200">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+
+  <div class="top">
+    <div class="w3-center profilePic">
+      <img id="img" [src]='ProfilePicUrl | async'>
+    </div>
+  </div>
+
+  <div class="bottom w3-center">
+
+    <div class="w3-margin-top">
+      <label class='w3-white w3-btn w3-padding w3-round' for='file'>Upload</label>
+      <input id="file" type="file" (change)='upload($event)' >
+    </div>
+    
+    <ion-card color="dark">
+      <ion-card-content>
+        <p>{{Firstname}} {{Lastname}}</p>
+      </ion-card-content>
+    </ion-card>
+    
+    <ion-card color="dark">
+      <ion-card-content>
+        <ion-text>{{Email}}</ion-text>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card color="dark">
+      <ion-card-content>
+        <ion-text>{{ID}}</ion-text>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card color="dark">
+      <ion-card-content>
+        <ion-text>{{Plan}}</ion-text>
+      </ion-card-content>
+    </ion-card>
+
+    <div class="w3-center w3-margin-top">
+      <ion-item [routerLink]="['/edit']" routerDirection="forward">
+        <ion-label>Edit Profile</ion-label>
+      </ion-item>               
+    </div>
+    <div class="w3-center w3-margin-top">
+      <ion-item [routerLink]="['/forgot-password']" routerDirection="forward">
+        <ion-label>Reset Password</ion-label>
+      </ion-item>               
+    </div>
+  </div>
+</ion-content>
+

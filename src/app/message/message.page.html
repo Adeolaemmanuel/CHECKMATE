@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color='danger'>
+    <ion-buttons slot="start">
+      <ion-back-button class="w3-text-white"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="w3-center" style="margin-left: -60px;">{{name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <div class="w3-container" style="margin-top: 20px;">
+    <div class="main">
+      <div class="chat-box">
+        <div class="message-area">
+          <div class="message" *ngFor="let s of messages" >
+            <p *ngIf='s.id == YID;' class="w3-round w3-pink w3-right" style="width: 200px;">{{s.chat}}</p>
+            <p *ngIf='s.id == FID;' class="w3-round w3-left" style="width: 200px;">{{s.chat}}</p>
+          </div>
+        </div>
+        <div class="emo-area">
+          <!-- emoji-panel component comes here -->
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="input-area">
+      <form (submit)="send()" name="messageForm" #messageForm="ngForm">
+        <ion-grid>
+          <ion-row>
+            <ion-col size='9'><ion-input type="text" name="message" id="message" [(ngModel)]="chat" placeholder="Say something nice..."></ion-input></ion-col>
+            <ion-col>
+              <button class="w3-black w3-round" style="width: 100%">
+                <ion-icon class="w3-xlarge" style="margin-top: 6px;" name="send"></ion-icon>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+    </div>
+  </ion-toolbar>
+</ion-footer>

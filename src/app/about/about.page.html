@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color='danger'>
+    <ion-buttons slot="start">
+      <ion-menu-button class="w3-text-white"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="w3-center"  style="margin-left: -80px;">About</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="w3-container">
+    <ion-card class="w3-center">
+      <ion-card-content class="w3-text-pink">CHECKMAIT</ion-card-content>
+    </ion-card>
+    <div class="w3-margin-top w3-container w3-small">
+      Checkmait is a mobile application that lets you know the current location of your friends.
+      <div class="w3-container">
+        <p class="w3-text-blue"><a [routerLink]="[ '/terms']">Terms and Conditions</a></p>
+        <p class="w3-text-blue"><a [routerLink]="[ '/privacy']">Privacy Terms</a></p>
+      </div>
+      <div class="w3-center">
+        Kortech© {{now}}
+      </div>
+    </div>
+  </div>
+</ion-content>

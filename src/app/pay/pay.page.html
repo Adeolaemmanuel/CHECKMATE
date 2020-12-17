@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color='danger'>
+    <ion-buttons slot="start">
+      <ion-menu-button class="w3-text-white"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="w3-center" style="margin-left: -80px;">Upgrade</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-list>
+      <ion-item>
+        <ion-row>
+          <ion-col class="w3-padding">
+            <ion-text class="w3-pink w3-padding w3-text-white">Plan:</ion-text>
+          </ion-col>
+          <ion-col>
+            <ion-text>{{Plan}}</ion-text>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>$5</ion-card-subtitle>
+          <ion-card-title>Standard</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content class="w3-center">
+          <angular4-paystack class="w3-btn w3-pink w3-round"
+          [email]="email"
+          [amount]="stan"
+          [ref]="ref"
+          (close)="paymentCancel()"
+          (callback)="paymentDone('Standard')"
+        >
+          Upgrade
+        </angular4-paystack>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>$12</ion-card-subtitle>
+          <ion-card-title>Premium</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content class="w3-center">
+          <angular4-paystack class="w3-btn w3-pink w3-round"
+          [email]="email"
+          [amount]="prem"
+          [ref]="ref"
+          (close)="paymentCancel()"
+          (callback)="paymentDone('Premium')"
+        >
+          Upgrade
+        </angular4-paystack>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+  </ion-grid>
+</ion-content>

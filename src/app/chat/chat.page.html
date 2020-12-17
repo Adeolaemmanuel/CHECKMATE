@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color='danger'>
+    <ion-buttons slot="start">
+      <ion-menu-button class="w3-text-white"></ion-menu-button>
+      <ion-title>Chat</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <div>
+    <div class="w3-margin-top w3-center" *ngFor="let c of Confirmed | keyvalue">
+      <ion-grid>
+        <ion-row id="{{c.key}}" (click)="message($event)">
+          <ion-col>
+            <ion-button color="dark" expand="block" id="{{c.key}}" (click)="message($event)">{{c.value}}</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+    
+</ion-content>

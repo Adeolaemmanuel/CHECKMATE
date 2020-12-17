@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color='danger'>
+    <ion-buttons slot="start">
+      <ion-back-button class="w3-text-white"></ion-back-button>
+      <ion-title>List</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <div id="container">
+    <div class="w3-margin-top">
+      <ion-grid>
+        <ion-row *ngFor="let l of Confirmed | keyvalue">
+          <ion-col>
+            <ion-list>
+              <ion-item id="{{l.key}}" (click)="view($event)">
+                <ion-text id="{{l.key}}" (click)="view($event)">{{l.value}}</ion-text>
+                <ion-icon id="{{l.key}}" (click)="view($event)" name="map" color="danger" slot="end"></ion-icon>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>

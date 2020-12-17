@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color ='danger'>
+    <ion-buttons slot="start">
+      <ion-back-button class="w3-text-white"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="w3-center" style="margin-left: -80;">Search</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #srch='ngForm' class="w3-margin-top">
+    <ion-searchbar color='danger' type='tel' [(ngModel)]="Search" name='search' showCancelButton="never" ></ion-searchbar>  
+  </form>
+  <div class="w3-center">
+    <ion-button color="danger" (click)="map()" class="w3-margin-top">Search</ion-button>
+  </div>
+
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false">
+    <agm-marker
+    [latitude]="lat"
+    [longitude]="lng"
+    >
+  </agm-marker>
+  </agm-map>
+</ion-content>

@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar color='danger'>
+    <ion-buttons slot="start">
+      <ion-back-button class="w3-text-white"></ion-back-button>
+    </ion-buttons>
+    <ion-title  style="margin-left: 50px;">EDIT PROFILE</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #edit="ngForm" class="w3-margin-left">
+    <ion-input type="text" class="w3-border w3-padding w3-block w3-margin-top" placeholder="First Name:" [(ngModel)]="Firstname" name="firstname"></ion-input>
+    <ion-input type="text" class="w3-border w3-padding w3-block w3-margin-top" placeholder="Last Name:" [(ngModel)]="Lastname" name="lastname"></ion-input>
+    <ion-input type="email" class="w3-border w3-padding w3-block w3-margin-top" placeholder="Email:" [(ngModel)]="Email" name="email"></ion-input>
+    <ion-input type="password" class="w3-border w3-padding w3-block w3-margin-top" placeholder="Password:" [(ngModel)]="Password" name="password"></ion-input>
+    <ion-button type="button" color="danger" class="w3-margin-top" expand="block" padding (click)="submit()">Submit</ion-button>
+  </form>
+</ion-content>

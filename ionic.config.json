@@ -1,5 +1,7 @@
 {
   "name": "checkmate",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

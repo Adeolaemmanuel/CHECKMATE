@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color='danger'>
+    <ion-buttons slot="start">
+      <ion-menu-button class="w3-text-white"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="w3-center w3-padding">MAP</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false">
+    <agm-marker *ngFor="let m of maker;"
+    [latitude]="m.lat"
+    [longitude]="m.lng"
+    [label]="m.label"
+    [markerDraggable]="m.draggable"
+    >
+    <agm-info-window>
+      <div id="{{m.number}}" (click)="pro($event)">
+        <div class="w3-row">
+          <div class="w3-col s3">
+            <img [src]='m.img | async' style="width: 20px; border-radius: 50%;" id="{{m.number}}" (click)="pro($event)">
+          </div>
+          <div class="w3-col s9">
+            <strong id="{{m.number}}" (click)="pro($event)"> {{m.fullname}}</strong>
+          </div>
+        </div>
+      </div>
+    </agm-info-window>
+  </agm-marker>
+  </agm-map>
+</ion-content>
+

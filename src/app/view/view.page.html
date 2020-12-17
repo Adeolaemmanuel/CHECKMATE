@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar color='danger'>
+    <ion-buttons slot="start">
+      <ion-back-button class="w3-text-white"></ion-back-button>
+      <ion-title class="w3-center">VIEW</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false">
+    <agm-marker
+    [latitude]="lat"
+    [longitude]="lng"
+    >
+  </agm-marker>
+  <agm-info-window>
+    <strong><img [src]='img | async' style="width: 20px; border-radius: 50%;"> {{name}}</strong>
+  </agm-info-window>
+  </agm-map>
+</ion-content>

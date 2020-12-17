@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button class="w3-text-pink"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="w3-center w3-text-pink" style="margin-left: -80px;"><h3>Login</h3></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="w3-container">
+  <form #login='ngForm' style="margin-top: 40px;">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-input type="email"  [(ngModel)]="Email" placeholder="Email:" class="place-center" name='email' required></ion-input>
+        </ion-col>
+        <ion-col>
+          <ion-input type="tel" [(ngModel)]="Phone" placeholder="Phone Number:" class="place-center" name='phone' required></ion-input>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-input type="password" [(ngModel)]="Password" placeholder="Password:" class="place-center" name='Password' required></ion-input>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" class="w3-margin-top" (click)='Log()' color="danger" expand="block">Sign In</ion-button>
+          <div class="w3-center w3-margin-top">
+            <a [routerLink]="['/forgot-password']" class="w3-small w3-margin-top w3-text-blue">Forgot Password?</a>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

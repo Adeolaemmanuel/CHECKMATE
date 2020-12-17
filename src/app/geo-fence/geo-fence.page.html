@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color='danger'>
+    <ion-buttons slot="start">
+      <ion-back-button class="w3-text-white"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="w3-center" style="margin-left: -80px;">Geofence</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <form #fence="ngForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-input type="tel" [(ngModel)]="phone" name="tel" class="place-center" placeholder="Phone Number" required></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-input type="text" [(ngModel)]="rad" name="rad" class="place-center" placeholder="Radius" required></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button color="danger" expand='block' (click)="add()">Submit</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+
+  <ion-card class="w3-center">
+    <ion-card-content>This adds a radius around the persons location and if passed will give you an alert</ion-card-content>
+  </ion-card>
+</ion-content>

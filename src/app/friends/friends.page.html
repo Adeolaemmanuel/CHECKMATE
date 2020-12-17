@@ -1,0 +1,120 @@
+<ion-header>
+  <ion-toolbar color='danger'>
+    <ion-buttons slot="start">
+      <ion-menu-button class="w3-text-white"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="w3-center" style="margin-left: -80px;">Friends</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-segment (ionChange)="segmentChanged($event)" value="all" color="tertiary" scrollable="true" mode="ios" [(ngModel)]="segmentModel" >
+    <ion-segment-button value="friends">
+      <ion-icon name="person"></ion-icon>
+      <ion-label>Friends</ion-label>
+      <ion-badge>{{confirmed.length}}</ion-badge>
+    </ion-segment-button>
+    <ion-segment-button value="search">
+      <ion-icon name='search'></ion-icon>
+      <ion-label>Search</ion-label>
+      <ion-badge>{{sent.length}}</ion-badge>
+    </ion-segment-button>
+    <ion-segment-button value="recieved">
+      <ion-icon name="person-add"></ion-icon>
+      <ion-label>Recieved</ion-label>
+      <ion-badge>{{recieved.length}}</ion-badge>
+    </ion-segment-button>
+  </ion-segment>
+  
+  <div id="container">
+    <div class="w3-container w3-margin-top">
+      <div *ngIf="segmentModel === 'friends'">
+        <div *ngIf="Confirmed.length>=0">
+          <ion-list  *ngFor="let c of Confirmed | keyvalue">
+            <ion-item>
+              <ion-grid>
+                <ion-row>
+                  <ion-col size='2'>
+                    <ion-img [src]="Cpictures[c.key] | async" style="height: 30px;"></ion-img>
+                  </ion-col>
+                  <ion-col size='6'  id="{{c.key}}" (click)="pro($event)">{{c.value}}</ion-col>
+                  <ion-col size='1'>
+                    <ion-button color='danger' id="{{c.value}}" (click)='Cdel($event)'>
+                      <ion-icon name="trash"></ion-icon>
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+          </ion-list>
+        </div>
+      </div>
+
+      <div *ngIf="segmentModel === 'search'">
+        <form #srch='ngForm' class="w3-margin-top">
+          <ion-searchbar color='danger' type='tel' [(ngModel)]="Search" name='search' showCancelButton="never" ></ion-searchbar>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-button (click)='num($event)'  class="w3-round" color="primary" expand="block">Contacts</ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button (click)='search()' class="w3-round" color="primary" expand="block">ADD</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>   
+        </form>
+        <div *ngIf="Sent.length!=0">
+          <ion-list *ngFor="let s of Sent | keyvalue">
+            <ion-item>
+              <ion-grid>
+                <ion-row>
+                  <ion-col size='2'>
+                    <ion-img [src]="Spictures[s.key] | async" style="height: 30px;"></ion-img>
+                  </ion-col>
+                  <ion-col size='6'>{{s.value}}</ion-col>
+                  <ion-col size='1'>
+                    <ion-button color='danger' id="{{s.value}}" (click)='Sdel($event)'>
+                      <ion-icon name="trash"></ion-icon>
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+          </ion-list>
+        </div>
+      </div>
+
+      <div *ngIf="segmentModel === 'recieved'">
+        <div *ngIf="Recieved.length>=0">
+          <ion-list *ngFor="let r of Recieved | keyvalue">
+            <ion-item>
+              <ion-grid>
+                <ion-row>
+                  <ion-col  size='2'>
+                    <ion-img [src]='Rpictures[r.key] | async'></ion-img>
+                  </ion-col>
+                  <ion-col size='5'>{{r.value}}</ion-col>
+                  <ion-col size='1'>
+                    <ion-button color='danger' id="{{r.value}}" (click)='Rdel($event)'>
+                      <ion-icon name="trash"></ion-icon>
+                    </ion-button>
+                  </ion-col>
+                  <ion-col size='1'>
+                    <ion-button class="w3-margin-left"  id="{{r.value}}" (click)='Ans($event)'>
+                      <ion-icon name="add"></ion-icon>
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+          </ion-list>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color='danger'>
+    <ion-buttons slot="start">
+      <ion-back-button class="w3-text-white"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="w3-center" style="margin-left: -80px;">Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="top">
+    <div class="w3-center profilePic">
+      <img [src]='ProfilePicUrl | async'>
+    </div>
+  </div>
+
+  <div class="bottom w3-center">
+    <ion-card color="dark">
+      <ion-card-content>
+        <ion-text>{{Firstname}} {{Lastname}}</ion-text>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card color="dark">
+      <ion-card-content>
+        <ion-text>{{Email}}</ion-text>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card color="dark">
+      <ion-card-content>
+        <ion-text>{{number}}</ion-text>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card color="dark">
+      <ion-card-content>
+        <ion-text>{{Plan}}</ion-text>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+

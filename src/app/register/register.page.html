@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button class="w3-text-pink"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="w3-center w3-text-pink" style="margin-left: -80px;"><h3>Register</h3></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="w3-container">
+  <form #registers='ngForm' style="margin-top: 30px">
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-input type="text" [(ngModel)]="fName" placeholder="First Name:" class="place-center" name='fName' required></ion-input>
+        </ion-col>
+        <ion-col>
+          <ion-input type="text" [(ngModel)]="lName" placeholder="Last Name:" class="place-center" name='lName' required></ion-input>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-input type="email" [(ngModel)]="Email" placeholder="Email:" class="place-center" name='Email' required></ion-input>
+        </ion-col>
+        <ion-col>
+          <ion-input type="tel" [(ngModel)]="Phone" placeholder="Phone Number:" class="place-center"  name='Phone' required></ion-input>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-input type="password" [(ngModel)]="password" placeholder="Password:" class="place-center" name='password' required></ion-input>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-button (click)='register()' class="w3-margin-top" color="danger" expand="block">Sign Up</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+  <div class="w3-center">
+    <ion-text class="w3-text-blue"><a [routerLink]="[ '/terms']">Terms and condition</a>| <a [routerLink]="[ '/privacy']">Privacy Policy</a></ion-text>
+  </div>
+</ion-content>
