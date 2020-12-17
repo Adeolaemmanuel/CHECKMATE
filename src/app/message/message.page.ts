@@ -28,7 +28,7 @@ export class MessagePage implements OnInit {
 
   send(){
     let friend = []
-    let me = []
+
     if(this.chat){
       this.db.collection('Chat').doc(`${this.FID}|${this.YID}`).get().subscribe(ch=>{
         friend = [...ch.data()['message']]
@@ -38,11 +38,13 @@ export class MessagePage implements OnInit {
           this.YID = id
           this.db.collection('Chat').doc(`${this.YID}|${this.FID}`).update({
             message: friend,
+            count: +1
           })
           this.db.collection('Chat').doc(`${this.FID}|${this.YID}`).update({
             message: friend,
           }).then(()=>{
-            this.chat = ''
+            this.chat = '';
+
           })
         })
       })
@@ -65,6 +67,7 @@ export class MessagePage implements OnInit {
         this.db.collection('Chat').doc(`${this.YID}|${this.FID}`).snapshotChanges().subscribe(m=>{
           if(m.payload.exists){
             this.messages = [...m.payload.data()['message']]
+            
           }
         })
       })
