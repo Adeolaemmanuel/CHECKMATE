@@ -38,22 +38,24 @@ export class MessagePage implements OnInit {
           this.YID = id
           this.db.collection('Chat').doc(`${this.YID}|${this.FID}`).update({
             message: friend,
-            count: +1
           })
           this.db.collection('Chat').doc(`${this.FID}|${this.YID}`).update({
             message: friend,
           }).then(()=>{
-            this.chat = '';
-
+            this.chat = ''
           })
         })
       })
     }
   }
 
+
+
+
   constructor(
     private functions: FunctionsService, 
-    private storage: Storage, private db: AngularFirestore, 
+    private storage: Storage, 
+    private db: AngularFirestore, 
     private location: Location, 
     private router: Router, 
     private active: ActivatedRoute) { }
@@ -64,10 +66,15 @@ export class MessagePage implements OnInit {
       this.name = ID.name
       this.storage.get('id').then(id=>{
         this.YID = id
+        this.db.collection('Users').doc(this.FID).get().subscribe(nam=>{
+          this.fn = `${nam.data()['Firstname']} ${nam.data()['Lastname']}`
+        })
+        this.db.collection('Users').doc(this.YID).get().subscribe(nam=>{
+          this.mn = `${nam.data()['Firstname']} ${nam.data()['Lastname']}`
+        })
         this.db.collection('Chat').doc(`${this.YID}|${this.FID}`).snapshotChanges().subscribe(m=>{
           if(m.payload.exists){
             this.messages = [...m.payload.data()['message']]
-            
           }
         })
       })
